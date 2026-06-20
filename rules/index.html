@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Правила чата Degradach</title>
+  <meta name="description" content="Правила чата Degradach. Прочтите перед участием — незнание правил не освобождает от ответственности." />
+  <meta name="theme-color" content="#0f1115" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Правила чата Degradach" />
+  <meta property="og:description" content="Прочтите и соблюдайте правила. Незнание правил не освобождает от бана." />
+  <meta property="og:image" content="fenechka.jpg" />
+  <meta property="og:locale" content="ru_RU" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' x='5'%3E%F0%9F%93%9C%3C/text%3E%3C/svg%3E" />
+
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --bg-elevated: #ffffff;
+      --bg-subtle: #f0efea;
+      --text: #1a1a1a;
+      --text-muted: #5c5c5c;
+      --text-faint: #8a8a8a;
+      --border: #e6e3dc;
+      --border-strong: #d4d0c6;
+
+      --accent: #4f46e5;
+      --accent-soft: #eef0ff;
+
+      --danger: #b91c1c;
+      --danger-soft: #fef2f2;
+      --danger-border: #fecaca;
+
+      --warn: #b45309;
+      --warn-soft: #fffbeb;
+      --warn-border: #fde68a;
+
+      --info: #1d4ed8;
+      --info-soft: #eff6ff;
+      --info-border: #bfdbfe;
+
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(15, 17, 21, 0.04), 0 8px 24px rgba(15, 17, 21, 0.04);
+      --maxw: 880px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115;
+        --bg-elevated: #181b21;
+        --bg-subtle: #1d2027;
+        --text: #e8e8e8;
+        --text-muted: #a8a8a8;
+        --text-faint: #707070;
+        --border: #2a2e36;
+        --border-strong: #3a3f49;
+
+        --accent: #818cf8;
+        --accent-soft: #1e2030;
+
+        --danger: #f87171;
+        --danger-soft: #2a1616;
+        --danger-border: #4a2424;
+
+        --warn: #fbbf24;
+        --warn-soft: #2a2116;
+        --warn-border: #4a3a1f;
+
+        --info: #60a5fa;
+        --info-soft: #16233a;
+        --info-border: #1f3a5a;
+
+        --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.2);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Roboto", "Helvetica Neue", Arial, "Noto Sans", "Noto Sans SC", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16.5px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ============ HEADER ============ */
+    .header {
+      padding: 56px 0 32px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      display: inline-block;
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+      line-height: 1;
+    }
+    .logo-text {
+      display: inline-block;
+      transition: opacity 0.2s ease;
+    }
+    .logo-image {
+      display: none;
+      max-width: clamp(180px, 32vw, 280px);
+      max-height: 120px;
+      width: auto;
+      height: auto;
+      margin-bottom: 22px;
+      border-radius: 10px;
+      object-fit: contain;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: var(--bg-elevated);
+    }
+    .logo-image.visible { display: inline-block; }
+    .logo-text.hidden { display: none; }
+    h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .subtitle {
+      font-size: clamp(15px, 2vw, 17px);
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 28px;
+    }
+    .meta-row {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 14px;
+      font-size: 13.5px;
+      color: var(--text-faint);
+    }
+    .meta-row span { display: inline-flex; align-items: center; gap: 5px; }
+    .meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--text-faint); display: inline-block; }
+
+    /* ============ CONTENT ============ */
+    main { padding: 40px 0 80px; }
+    main > * + * { margin-top: 28px; }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .section-tag {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    h2 {
+      font-size: clamp(22px, 3.5vw, 28px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 15.5px;
+      margin-bottom: 18px;
+    }
+
+    /* ============ CARD ============ */
+    .card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-body { padding: 22px 24px; }
+    .card-body p:last-child { margin-bottom: 0; }
+
+    /* ============ INFO BANNER ============ */
+    .info-banner {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--info-soft);
+      border: 1px solid var(--info-border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+    }
+    .info-banner .icon {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--info);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .info-banner h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .info-banner p { font-size: 14.5px; color: var(--text-muted); margin: 0; }
+    .info-banner strong { color: var(--text); }
+
+    /* ============ RULE LISTS ============ */
+    .rules-list {
+      list-style: none;
+      counter-reset: rule;
+    }
+    .rules-list > li {
+      counter-increment: rule;
+      position: relative;
+      padding: 14px 0 14px 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    .rules-list > li:last-child { border-bottom: none; padding-bottom: 4px; }
+    .rules-list > li:first-child { padding-top: 4px; }
+    .rules-list > li::before {
+      content: counter(rule);
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: var(--bg-subtle);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+    }
+    .rules-list > li:first-child::before { top: 4px; }
+    .rule-text { font-size: 15.5px; color: var(--text); }
+    .rule-sub {
+      list-style: none;
+      margin-top: 8px;
+      padding-left: 0;
+    }
+    .rule-sub > li {
+      position: relative;
+      padding: 4px 0 4px 18px;
+      font-size: 14.5px;
+      color: var(--text-muted);
+    }
+    .rule-sub > li::before {
+      content: "↳";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      color: var(--text-faint);
+    }
+
+    /* Section-specific rule number badge colors */
+    .section--danger .rules-list > li::before {
+      background: var(--danger-soft);
+      color: var(--danger);
+      border-color: var(--danger-border);
+    }
+    .section--warn .rules-list > li::before {
+      background: var(--warn-soft);
+      color: var(--warn);
+      border-color: var(--warn-border);
+    }
+
+    /* ============ FOOTNOTES ============ */
+    .footnotes {
+      margin-top: 14px;
+      padding: 16px 20px;
+      background: var(--bg-subtle);
+      border: 1px dashed var(--border-strong);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .footnotes p { margin: 4px 0; }
+    .footnotes sup { color: var(--accent); font-weight: 700; margin-right: 4px; }
+
+    /* ============ NOTES GRID ============ */
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .note-item {
+      padding: 16px 18px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent);
+    }
+    .note-item p { font-size: 14.5px; color: var(--text); margin: 0; }
+
+    /* ============ UNBAN ============ */
+    .unban-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      box-shadow: var(--shadow);
+    }
+    .unban-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .unban-contact {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.15s ease;
+    }
+    .unban-contact:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+    .unban-contact .label {
+      font-size: 13px;
+      color: var(--text-muted);
+      flex: 1;
+    }
+    .unban-contact .handle {
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .unban-contact .arrow {
+      color: var(--text-faint);
+      font-size: 18px;
+    }
+
+    /* ============ ANCHOR LINKS INSIDE RULES ============ */
+    a.inline-link {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease;
+    }
+    a.inline-link:hover { border-bottom-color: var(--accent); }
+
+    /* ============ MOBILE ============ */
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .header { padding: 40px 0 28px; }
+      .card-body { padding: 18px 18px; }
+      .rules-list > li {
+        padding-left: 46px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+      .rules-list > li::before {
+        width: 28px;
+        height: 28px;
+        font-size: 12.5px;
+        top: 12px;
+      }
+      .info-banner { padding: 16px 16px; gap: 12px; }
+      .info-banner .icon { width: 32px; height: 32px; font-size: 17px; }
+      .unban-card { padding: 20px 18px; }
+    }
+
+    /* ============ HERO IMAGE ============ */
+    .hero-image {
+      margin: 0 auto 28px;
+      max-width: 640px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: var(--bg-elevated);
+    }
+    .hero-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .hero-caption {
+      padding: 12px 18px;
+      font-size: 14.5px;
+      text-align: center;
+      color: var(--text-muted);
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Back to top */
+    .to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 100;
+    }
+    .to-top.visible { opacity: 1; pointer-events: auto; }
+    .to-top:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+
+    /* ============ FOOTER ============ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 0 56px;
+      text-align: center;
+    }
+    .footer-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 8px;
+      line-height: 1.55;
+    }
+    .footer-text strong { color: var(--text); font-weight: 600; }
+    .footer-text .heart { color: var(--danger); }
+
+    /* ============ EASTER EGG ============ */
+    .easter {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      cursor: pointer;
+      color: transparent;
+      background: transparent;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      font-size: 13px;
+      transition: color 0.2s ease;
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      outline: none;
+    }
+    .easter:hover {
+      color: var(--text-faint);
+      background: var(--bg-subtle);
+    }
+    .easter:focus-visible {
+      color: var(--text-faint);
+      box-shadow: 0 0 0 2px var(--accent-soft);
+    }
+    .footer-easter-wrap {
+      margin-top: 14px;
+      line-height: 1;
+    }
+
+    /* Konh mode: word suffix transform */
+    body.konh-mode {
+      animation: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =================== HEADER =================== -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-text" id="logo-text">DEGRADACH</span>
+        <img class="logo-image" id="logo-image" alt="" />
+      </div>
+      <h1>Правила чата</h1>
+      <p class="subtitle">
+        Прочтите и соблюдайте правила. Не обижайте Фенечку.
+        Незнание правил не освобождает от ответственности.
+      </p>
+
+      <div class="hero-image">
+        <img src="fenechka.jpg" alt="Фенечка — талисман чата Degradach" loading="lazy" />
+        <div class="hero-caption">❤️ Прочтите и соблюдайте правила, не обижайте Фенечку ❤️</div>
+      </div>
+
+      <div class="meta-row">
+        <span>📅 Опубликовано 26 марта 2024</span>
+        <span class="meta-dot"></span>
+        <span>🔄 Обновлено 30 мая 2026</span>
+        <span class="meta-dot"></span>
+        <span>💬 Действует в Telegram-чате</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- =================== MAIN =================== -->
+  <main class="container">
+
+    <!-- ===== INFO BANNERS ===== -->
+    <section aria-label="Важная информация">
+      <div class="info-banner">
+        <div class="icon" aria-hidden="true">🌙</div>
+        <div>
+          <h3>Ночной режим и санитарные дни</h3>
+          <p>
+            После <strong>23:00 по МСК</strong> отключается возможность публиковать медиа и ставится
+            КД на сообщения в <strong>30–60 секунд</strong>.<br />
+            Каждые <strong>первые выходные каждого месяца</strong> — санитарный день: чат
+            отключается полностью.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-banner" style="margin-top: 12px; background: var(--warn-soft); border-color: var(--warn-border);">
+        <div class="icon" aria-hidden="true" style="background: var(--warn);">📋</div>
+        <div>
+          <h3>Правила могут обновляться</h3>
+          <p>
+            Администрация вправе дополнять и изменять правила в любой момент без отдельного
+            уведомления. <strong>Периодически перечитывайте эту страницу</strong> — незнание
+            актуальной версии правил не освобождает от ответственности. Дата последнего обновления
+            указана вверху страницы.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== UNBAN ===== -->
+    <section aria-labelledby="sec-unban">
+      <div class="section-head">
+        <span class="section-tag" style="background: var(--accent-soft); color: var(--accent); border-color: var(--accent);">💸 Разбан</span>
+      </div>
+      <h2 id="sec-unban">Если уже забанили</h2>
+      <p class="section-desc">К кому обращаться по вопросам разбана или чтобы узнать причину бана.</p>
+
+      <div class="unban-card">
+        <div class="unban-contacts">
+          <a class="unban-contact" href="https://t.me/Leon_Sobbakovich" target="_blank" rel="noopener">
+            <div>
+              <div class="label">Разбан / узнать причину бана в чате Degradach (TG)</div>
+              <div class="handle">@Leon_Sobbakovich</div>
+            </div>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="unban-contact" href="https://t.me/WhiteBreniZ" target="_blank" rel="noopener">
+            <div>
+              <div class="label">Забанили на стриме? Поплачь или напиши сюда</div>
+              <div class="handle">@WhiteBreniZ</div>
+            </div>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 1: БАН БЕЗ ПРЕДУПРЕЖДЕНИЯ ===== -->
+    <section class="section--danger" aria-labelledby="sec-ban">
+      <div class="section-head">
+        <span class="section-tag" style="background: var(--danger-soft); color: var(--danger); border-color: var(--danger-border);">🚫 Бан сразу</span>
+      </div>
+      <h2 id="sec-ban">Бан без предупреждения за</h2>
+      <p class="section-desc">За эти нарушения выдаётся мгновенный бан. Никаких «последних предупреждений».</p>
+
+      <div class="card">
+        <div class="card-body">
+          <ol class="rules-list">
+            <li>
+              <div class="rule-text">Пропаганда ЛГБТ.</div>
+              <ul class="rule-sub">
+                <li>За любое «Я няшный фембойчик uWu~» и подобное — бан сразу.</li>
+              </ul>
+            </li>
+            <li><div class="rule-text">Обсуждение действий администрации (например, «за что забанили?»).</div></li>
+            <li><div class="rule-text">Разжигание ненависти по расовому, национальному или религиозному признакам.</div></li>
+            <li><div class="rule-text">Политические споры, особенно агрессивные. Если Бэбэй опубликовал новость, связанную с политикой — можно обсудить, но не устраивать споры и не беспочвенно обвинять людей и страны.</div></li>
+            <li><div class="rule-text">Нацистская символика.</div></li>
+            <li><div class="rule-text">Агрессия по отношению к Бэбэю, Насте или любому другому участнику чата. Не стоит использовать оскорбительные слова и выражения.</div></li>
+            <li><div class="rule-text">Распространение ложной информации о Бабае. <sup>*</sup></div></li>
+            <li><div class="rule-text">Оскорбления в адрес администрации.</div></li>
+            <li><div class="rule-text">Обсуждение наркотиков и разговоры на тематику военной техники / оружия. <em>(из игр можно)</em></div></li>
+            <li><div class="rule-text">Домогательства до участников чата.</div></li>
+            <li><div class="rule-text">Бойкиссер в любом виде. <em>(фенякиссера можно)</em></div></li>
+            <li><div class="rule-text">Жестокость, расчленёнка и NSFW-контент.</div></li>
+            <li>
+              <div class="rule-text">Реклама любого вида. Ссылки на паблики и прочее — только по согласованию с администрацией.</div>
+              <ul class="rule-sub">
+                <li>К этому также относится общение от имени канала.</li>
+              </ul>
+            </li>
+            <li><div class="rule-text">Оправдание терроризма.</div></li>
+            <li><div class="rule-text">Твинк забаненного аккаунта = бан обоих аккаунтов.</div></li>
+            <li><div class="rule-text">Раковые форсы. <sup>**</sup></div></li>
+            <li><div class="rule-text">Спам и флуд в любом виде.</div></li>
+            <li><div class="rule-text">Использование тонких формулировок для «обхода» правил.</div></li>
+          </ol>
+
+          <div class="footnotes">
+            <p><sup>*</sup> Например, назначение его виновным в преступлениях в Башкирии или Стерлитамаке, запрете треш-стримов и т. д.</p>
+            <p><sup>**</sup> Всякие шутки по типу «срал в торт», «фашист», «палестинские дети», «1984». Это не оригинально и уже надоело.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: ПОСЛЕДНЕЕ КИТАЙСКОЕ ПРЕДУПРЕЖДЕНИЕ ===== -->
+    <section class="section--warn" aria-labelledby="sec-warn">
+      <div class="section-head">
+        <span class="section-tag" style="background: var(--warn-soft); color: var(--warn); border-color: var(--warn-border);">⚠️ Сначала варн</span>
+      </div>
+      <h2 id="sec-warn">Последнее китайское предупреждение и бан за</h2>
+      <p class="section-desc">Сначала выдаётся предупреждение. При повторе — бан.</p>
+
+      <div class="card">
+        <div class="card-body">
+          <ol class="rules-list">
+            <li><div class="rule-text">Блевотина, дефекация и другие мерзости.</div></li>
+            <li><div class="rule-text">Фурри-контент.</div></li>
+            <li><div class="rule-text">Ники по типу Яна Цист, Яфа Шист, Гена Цидармян и прочие осудительные вариации.</div></li>
+            <li>
+              <div class="rule-text">
+                Срач из фотожаб в чате. Для этого есть
+                <a class="inline-link" href="https://t.me/DegraPredloBot" target="_blank" rel="noopener">предложка</a>.
+                <strong>Если на стриме вашу фотожабу не показали — значит она говно, обтекайте.</strong>
+              </div>
+            </li>
+            <li><div class="rule-text">Обсуждение (тем более распространение) средств обхода блокировок.</div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NOTES ===== -->
+    <section aria-labelledby="sec-notes">
+      <div class="section-head">
+        <span class="section-tag">📌 Замечания</span>
+      </div>
+      <h2 id="sec-notes">Важные замечания</h2>
+      <p class="section-desc">Прочтите особенно внимательно, если вы любите постиронию.</p>
+
+      <div class="notes-grid">
+        <div class="note-item">
+          <p>🎭 Модеры иронии не понимают. Если ваши постироничные изречения подпадают под запрещённые темы — бан. Мы видим удалённые сообщения.</p>
+        </div>
+        <div class="note-item">
+          <p>🥺 Не имеет смысла давить на жалость. В бан улетают как новички, так и завсегдатаи чата.</p>
+        </div>
+        <div class="note-item">
+          <p>⚖️ Все равны перед законом.</p>
+        </div>
+        <div class="note-item">
+          <p>👤 Ваш твинк будет забанен.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== UNBAN (MOVED UP) ===== -->
+
+    <!-- ===== COMMUNITIES REMOVED ===== -->
+
+  </main>
+
+  <!-- =================== FOOTER =================== -->
+  <footer>
+    <div class="container">
+      <p class="footer-text">
+        С заботой о чистоте чата и <strong>чатерсах</strong> <span class="heart">❤</span> Pepegovich
+      </p>
+      <div class="footer-easter-wrap" id="easter-wrap" aria-hidden="true"></div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="to-top" aria-label="Наверх">↑</button>
+
+  <script>
+    // ===== Back to top =====
+    (function() {
+      var btn = document.getElementById('to-top');
+      function onScroll() {
+        if (window.scrollY > 400) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      onScroll();
+    })();
+
+    // ===== Easter eggs =====
+    (function() {
+      var EASTER_WORDS = ['ЧИНАЗЕС', 'ЗУБЫ КОРЕГА', 'КРОССОВОК', 'КОНЬХ'];
+
+      // Pick a random easter egg word for this page load
+      var chosen = EASTER_WORDS[Math.floor(Math.random() * EASTER_WORDS.length)];
+
+      // Render the invisible word in the footer
+      var wrap = document.getElementById('easter-wrap');
+      var easterEl = document.createElement('span');
+      easterEl.className = 'easter';
+      easterEl.id = 'easter-word';
+      easterEl.textContent = chosen;
+      easterEl.setAttribute('title', '');
+      easterEl.setAttribute('tabindex', '0');
+      easterEl.setAttribute('role', 'button');
+      easterEl.setAttribute('aria-label', 'Пасхалка');
+      wrap.appendChild(easterEl);
+
+      // ---- CHINAZES: play the mp3 ----
+      var chinAudio = null;
+      function playChin() {
+        if (!chinAudio) {
+          chinAudio = new Audio('chin.mp3');
+          chinAudio.preload = 'auto';
+        }
+        // Restart if already playing
+        try { chinAudio.currentTime = 0; } catch(e) {}
+        var p = chinAudio.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch(function(){ /* ignore autoplay block */ });
+        }
+      }
+
+      // ---- Logo swap helpers ----
+      var logoText = document.getElementById('logo-text');
+      var logoImage = document.getElementById('logo-image');
+
+      function scrollToTopSmooth() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function setLogoImage(src) {
+        logoImage.src = src;
+        logoImage.classList.add('visible');
+        logoText.classList.add('hidden');
+      }
+
+      // ---- ZUBY KOREGA: swap logo to corega.webp + scroll to top ----
+      function applyCorega() {
+        setLogoImage('corega.webp');
+        scrollToTopSmooth();
+      }
+
+      // ---- KROSSOVOK: swap logo to crossovok.webp + scroll to top ----
+      function applyCrossovok() {
+        setLogoImage('crossovok.webp');
+        scrollToTopSmooth();
+      }
+
+      // ---- KONH: append -кх / -ьх to every word ----
+      var konhActive = false;
+      var originalBodyHTML = null;
+
+      var CONSONANTS = 'бвгджзйклмнпрстфхцчшщ';
+      function isConsonant(ch) {
+        if (!ch) return false;
+        ch = ch.toLowerCase();
+        return CONSONANTS.indexOf(ch) !== -1;
+      }
+
+      function transformWordKonh(word) {
+        // Find trailing punctuation/symbols
+        var m = word.match(/^([\s\S]*?)([A-Za-zА-Яа-яЁё]+)([\s\S]*)$/);
+        if (!m) return word;
+        var prefix = m[1], core = m[2], suffix = m[3];
+        var lastLetter = core.charAt(core.length - 1);
+        var ending = isConsonant(lastLetter) ? 'ьх' : 'кх';
+        return prefix + core + ending + suffix;
+      }
+
+      function walkTextNodes(node, fn) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          var text = node.nodeValue;
+          if (!text || !text.trim()) return;
+          // skip nodes inside <script>/<style>
+          var parentName = node.parentNode && node.parentNode.nodeName;
+          if (parentName === 'SCRIPT' || parentName === 'STYLE') return;
+          // skip the easter egg element itself
+          if (node.parentNode && node.parentNode.classList && node.parentNode.classList.contains('easter')) return;
+          var words = text.split(/(\s+)/);
+          var changed = false;
+          for (var i = 0; i < words.length; i++) {
+            if (words[i] && words[i].trim() && /[A-Za-zА-Яа-яЁё]/.test(words[i])) {
+              words[i] = fn(words[i]);
+              changed = true;
+            }
+          }
+          if (changed) node.nodeValue = words.join('');
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          var name = node.nodeName;
+          if (name === 'SCRIPT' || name === 'STYLE') return;
+          // Snapshot child nodes since we'll mutate
+          var children = Array.prototype.slice.call(node.childNodes);
+          for (var i = 0; i < children.length; i++) {
+            walkTextNodes(children[i], fn);
+          }
+        }
+      }
+
+      function toggleKonh() {
+        if (!konhActive) {
+          walkTextNodes(document.body, transformWordKonh);
+          konhActive = true;
+          document.body.classList.add('konh-mode');
+        } else {
+          // Reload page to revert — simplest and most reliable way
+          window.location.reload();
+        }
+      }
+
+      // ---- Dispatcher ----
+      function triggerEaster(word) {
+        switch (word) {
+          case 'ЧИНАЗЕС':
+            playChin();
+            break;
+          case 'ЗУБЫ КОРЕГА':
+            applyCorega();
+            break;
+          case 'КРОССОВОК':
+            applyCrossovok();
+            break;
+          case 'КОНЬХ':
+            toggleKonh();
+            break;
+        }
+      }
+
+      easterEl.addEventListener('click', function(e) {
+        e.preventDefault();
+        triggerEaster(chosen);
+      });
+      easterEl.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          triggerEaster(chosen);
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
