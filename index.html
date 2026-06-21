@@ -309,6 +309,63 @@
     .footnotes p { margin: 4px 0; }
     .footnotes sup { color: var(--accent); font-weight: 700; margin-right: 4px; }
 
+    /* ============ COLLAPSIBLE (details) INSIDE RULES ============ */
+    .rule-details {
+      margin-top: 8px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      overflow: hidden;
+    }
+    .rule-details > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 8px 14px;
+      font-size: 14px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .rule-details > summary::-webkit-details-marker { display: none; }
+    .rule-details > summary:hover {
+      background: var(--bg-elevated);
+      color: var(--text);
+    }
+    .rule-details > summary .chevron {
+      display: inline-block;
+      width: 14px;
+      text-align: center;
+      color: var(--text-faint);
+      transition: transform 0.2s ease;
+    }
+    .rule-details[open] > summary .chevron {
+      transform: rotate(90deg);
+    }
+    .rule-details > summary .label {
+      font-weight: 500;
+    }
+    .rule-details-body {
+      padding: 4px 14px 12px 36px;
+      margin: 0;
+    }
+    .rule-details-body li {
+      list-style: none;
+      position: relative;
+      padding: 4px 0 4px 18px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .rule-details-body li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      color: var(--text-faint);
+    }
+
     /* ============ NOTES GRID ============ */
     .notes-grid {
       display: grid;
@@ -488,9 +545,10 @@
       color: var(--text-faint);
       box-shadow: 0 0 0 2px var(--accent-soft);
     }
-    .footer-easter-wrap {
-      margin-top: 14px;
+    .header-easter-wrap {
+      margin: 6px 0 18px;
       line-height: 1;
+      min-height: 18px;
     }
 
     /* Konh mode: word suffix transform */
@@ -508,6 +566,7 @@
         <span class="logo-text" id="logo-text">DEGRADACH</span>
         <img class="logo-image" id="logo-image" alt="" />
       </div>
+      <div class="header-easter-wrap" id="easter-wrap" aria-hidden="true"></div>
       <h1>Правила чата</h1>
       <p class="subtitle">
         Прочтите и соблюдайте правила. Не обижайте Фенечку.
@@ -625,14 +684,28 @@
             </li>
             <li><div class="rule-text">Оправдание терроризма.</div></li>
             <li><div class="rule-text">Твинк забаненного аккаунта = бан обоих аккаунтов.</div></li>
-            <li><div class="rule-text">Раковые форсы. <sup>**</sup></div></li>
+            <li>
+              <div class="rule-text">Раковые форсы.</div>
+              <details class="rule-details">
+                <summary>
+                  <span class="chevron">›</span>
+                  <span class="label">Что считается раковыми форсами</span>
+                </summary>
+                <ul class="rule-details-body">
+                  <li>Срал в торт</li>
+                  <li>Фашист</li>
+                  <li>1984</li>
+                  <li>Палестинские дети</li>
+                  <li>Любой форс, который заебал Бабая</li>
+                </ul>
+              </details>
+            </li>
             <li><div class="rule-text">Спам и флуд в любом виде.</div></li>
             <li><div class="rule-text">Использование тонких формулировок для «обхода» правил.</div></li>
           </ol>
 
           <div class="footnotes">
             <p><sup>*</sup> Например, назначение его виновным в преступлениях в Башкирии или Стерлитамаке, запрете треш-стримов и т. д.</p>
-            <p><sup>**</sup> Всякие шутки по типу «срал в торт», «фашист», «палестинские дети», «1984». Это не оригинально и уже надоело.</p>
           </div>
         </div>
       </div>
@@ -699,9 +772,8 @@
   <footer>
     <div class="container">
       <p class="footer-text">
-        С заботой о чистоте чата и <strong>чатерсах</strong> <span class="heart">❤</span> команда модераторов.
+        С заботой о чистоте чата и <strong>чатерсах</strong> <span class="heart">❤</span> Pepegovich
       </p>
-      <div class="footer-easter-wrap" id="easter-wrap" aria-hidden="true"></div>
     </div>
   </footer>
 
@@ -727,7 +799,7 @@
 
     // ===== Easter eggs =====
     (function() {
-      var EASTER_WORDS = ['ЧИНАЗЕС', 'ЗУБЫ КОРЕГА', 'КРОССОВОК', 'КОНЬХ'];
+      var EASTER_WORDS = ['ЧИНАЗЕС', 'ЗУБЫ КОРЕГА', 'КРОССОВОК', 'КОНЬХ', 'ФИМОЗ'];
 
       // Pick a random easter egg word for this page load
       var chosen = EASTER_WORDS[Math.floor(Math.random() * EASTER_WORDS.length)];
@@ -782,6 +854,22 @@
       // ---- KROSSOVOK: swap logo to crossovok.webp + scroll to top ----
       function applyCrossovok() {
         setLogoImage('crossovok.webp');
+        scrollToTopSmooth();
+      }
+
+      // ---- FIMOZ: play fimoz.mp3 + swap logo to fimozishar.webp + scroll to top ----
+      var fimozAudio = null;
+      function applyFimoz() {
+        if (!fimozAudio) {
+          fimozAudio = new Audio('fimoz.mp3');
+          fimozAudio.preload = 'auto';
+        }
+        try { fimozAudio.currentTime = 0; } catch(e) {}
+        var p = fimozAudio.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch(function(){ /* ignore autoplay block */ });
+        }
+        setLogoImage('fimozishar.webp');
         scrollToTopSmooth();
       }
 
@@ -860,6 +948,9 @@
             break;
           case 'КОНЬХ':
             toggleKonh();
+            break;
+          case 'ФИМОЗ':
+            applyFimoz();
             break;
         }
       }
